@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bird Language Translator</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #fef7e0; }
+    h1 { color: #6b3e26; }
+    textarea { width: 100%; height: 100px; margin-bottom: 10px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #outputText { white-space: pre-wrap; font-size: 18px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Bird Language Translator</h1>
+  <textarea id="inputText" placeholder="Type English text here..."></textarea>
+  <br>
+  <button onclick="translateBird()">Translate</button>
+  <h2>Bird Text:</h2>
+  <p id="outputText"></p>
+
+  <script>
+    const birdAlphabet = {
+      A: "\\|/", B: "ᯤ", C: "⸺", D: "⋏", E: "⸕",
+      F: "⚲", G: "⸰", H: "⸂⸃", I: "|", J: "﹏",
+      K: "⌣", L: "◞", M: "⋒", N: "—", O: "∖/",
+      P: "ᯂ", Q: "⌇", R: "メ", S: "/", T: "┆",
+      U: "⸜⸝", V: "\\/", W: "〣", X: "╳", Y: "\\‖/", Z: "⧉"
+    };
+
+    function translateBird() {
+      const input = document.getElementById("inputText").value.toUpperCase();
+      let output = "";
+      for (let char of input) {
+        if (birdAlphabet[char]) {
+          output += birdAlphabet[char] + " ";
+        } else if (char === " ") {
+          output += "   "; // extra spaces between words
+        } else {
+          output += char; // keep punctuation as is
+        }
+      }
+      document.getElementById("outputText").innerText = output;
+    }
+  </script>
+</body>
+</html>
